@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity"
+    android:windowSoftInputMode="adjustPan"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:id="@+id/viewFlipper">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/salutation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="20sp"
+                android:text="Welcome to Mobile Platform Development"
+                />
+
+            <TextView
+                android:id="@+id/acknowledgement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/salutation"
+                app:layout_constraintStart_toStartOf="@id/salutation"
+                android:textSize="20sp"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:text="Contains British Geological Survey materials ©NERC 2019"
+                />
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@id/editTextDate"
+                app:layout_constraintBottom_toBottomOf="@id/editTextDate"
+                app:layout_constraintStart_toStartOf="@id/salutation"
+                android:textSize="15sp"
+                android:text="Enter specific date:\n(Leave empty to list all Earthquakes)"
+                />
+
+            <EditText
+                android:id="@+id/editTextDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="dd/MM/yyyy"
+                app:layout_constraintTop_toBottomOf="@id/acknowledgement"
+                app:layout_constraintStart_toEndOf="@id/textViewDate"
+                android:maxLength="10"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                />
+
+
+
+            <Button
+                android:id="@+id/allEarthquakesButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/editTextDate"
+                app:layout_constraintStart_toStartOf="@id/salutation"
+                android:textSize="13sp"
+                android:layout_marginTop="5dp"
+                android:text="Press to get data"
+                />
+
+            <Button
+                android:id="@+id/searchEarthquakesButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/editTextDate"
+                app:layout_constraintStart_toEndOf="@id/allEarthquakesButton"
+                android:textSize="13sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:text="Search Earthquake"
+                />
+
+            <com.example.karastoyanov_martin_s2031121.NestedListView
+                android:fillViewport="true"
+                android:id="@+id/rawDataDisplay"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/allEarthquakesButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Back"
+            android:textSize="20sp"
+            app:layout_constraintTop_toTopOf="@id/depthTextView"
+            app:layout_constraintBottom_toBottomOf="@id/categoryTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="10dp"
+            android:layout_gravity="center"
+            android:id="@+id/goBackButton"
+            />
+
+        <TextView
+            android:id="@+id/depthTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/goBackButton"
+            android:textSize="20sp"
+            android:layout_marginStart="20dp"
+            />
+
+        <TextView
+            android:id="@+id/magnitudeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/depthTextView"
+            app:layout_constraintStart_toStartOf="@id/depthTextView"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/magnitudeTextView"
+            app:layout_constraintStart_toStartOf="@id/depthTextView"
+            android:textSize="20sp"
+            android:layout_marginTop="2dp"
+            />
+
+        <TextView
+            android:id="@+id/categoryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/dateTextView"
+            app:layout_constraintStart_toStartOf="@id/depthTextView"
+            android:textSize="20sp"
+            android:layout_marginTop="2dp"
+            />
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/map"
+            app:layout_constraintTop_toBottomOf="@id/goBackButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="120dp"
+            tools:context="myandroidstuff.me.org.mapflipperexample.MapsFlipperActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:id="@+id/toHomeViewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Go Back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textViewSpecificEarthquakeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter specific date:"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextSpecificEarthquakeDate"
+            app:layout_constraintStart_toStartOf="@+id/toHomeViewButton"
+            app:layout_constraintTop_toTopOf="@+id/editTextSpecificEarthquakeDate" />
+
+        <EditText
+            android:id="@+id/editTextSpecificEarthquakeDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:hint="dd/MM/yyyy"
+            android:maxLength="10"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/textViewSpecificEarthquakeDate"
+            app:layout_constraintTop_toBottomOf="@id/toHomeViewButton" />
+
+        <TextView
+            android:id="@+id/textViewSpecificEarthquakeLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter specific location:"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/editTextSpecificEarthquakeLocation"
+            app:layout_constraintStart_toStartOf="@id/textViewSpecificEarthquakeDate"
+            app:layout_constraintTop_toTopOf="@+id/editTextSpecificEarthquakeLocation" />
+
+        <EditText
+            android:id="@+id/editTextSpecificEarthquakeLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:maxLength="20"
+            android:hint="location"
+            android:textSize="15sp"
+            app:layout_constraintStart_toEndOf="@id/textViewSpecificEarthquakeLocation"
+            app:layout_constraintTop_toBottomOf="@id/editTextSpecificEarthquakeDate" />
+
+        <Button
+            android:id="@+id/searchSpecificEarthquakesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Search Earthquake"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/editTextSpecificEarthquakeLocation" />
+
+        <Button
+            android:id="@+id/shallowestButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Shallowest"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@+id/deepestButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchSpecificEarthquakesButton" />
+
+        <Button
+            android:id="@+id/deepestButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:text="Deepest"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@+id/largestMagnitudeButton"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/shallowestButton"
+            app:layout_constraintTop_toBottomOf="@id/searchSpecificEarthquakesButton" />
+
+        <Button
+            android:id="@+id/largestMagnitudeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="20dp"
+            android:text="Largest"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/deepestButton"
+            app:layout_constraintTop_toBottomOf="@id/searchSpecificEarthquakesButton" />
+
+        <Button
+            android:id="@+id/extremeEarthquakesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Nearest Extreme Earthquakes"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/largestMagnitudeButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView2"
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Go Back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center"
+                android:id="@+id/goSearchViewButton"
+                />
+
+            <TextView
+                android:id="@+id/explanation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/goSearchViewButton"
+                app:layout_constraintStart_toStartOf="@id/goSearchViewButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:text="Nearest Northerly/Southerly/Westerly/Easterly earthquakes (In that order)"
+                />
+
+            <com.example.karastoyanov_martin_s2031121.NestedListView
+                android:fillViewport="true"
+                android:id="@+id/extremeEarthquakesDisplay"
+                android:layout_marginTop="20dp"
+                app:layout_constraintTop_toBottomOf="@id/explanation"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</ViewFlipper>
+
